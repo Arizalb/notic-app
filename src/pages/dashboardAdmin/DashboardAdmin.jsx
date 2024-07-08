@@ -44,7 +44,7 @@ const DashboardAdmin = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api-msib-6-travel-management-03.educalab.id/users/dashboard/stats",
+          "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/users/dashboard/stats",
           {
             headers: {
               Authorization: `Bearer ${token}`, // Ensure token is sent with Bearer format
@@ -65,11 +65,17 @@ const DashboardAdmin = () => {
   const { totalUsers, newRegistrations, usersPerDay } = dashboardStats;
 
   const lineData = {
-    labels: usersPerDay && usersPerDay.length > 0 ? usersPerDay.map((data) => data.date) : [],
+    labels:
+      usersPerDay && usersPerDay.length > 0
+        ? usersPerDay.map((data) => data.date)
+        : [],
     datasets: [
       {
         label: "Total Users",
-        data: usersPerDay && usersPerDay.length > 0 ? usersPerDay.map((data) => data.count) : [],
+        data:
+          usersPerDay && usersPerDay.length > 0
+            ? usersPerDay.map((data) => data.count)
+            : [],
         fill: true,
         backgroundColor: "rgba(108, 99, 255, 0.2)",
         borderColor: "#6c63ff",
@@ -110,7 +116,9 @@ const DashboardAdmin = () => {
   return (
     <Container
       fluid
-      className={`component-container p-3 ${isDarkMode ? "dark-mode" : "light-mode"}`}
+      className={`component-container p-3 ${
+        isDarkMode ? "dark-mode" : "light-mode"
+      }`}
     >
       {user ? (
         <>
@@ -141,11 +149,7 @@ const DashboardAdmin = () => {
             <Col>
               <Card className="card-hover">
                 <Card.Body className="card-body-custom">
-                  <img
-                    src="/key.svg"
-                    alt="registration"
-                    className="card-img"
-                  />
+                  <img src="/key.svg" alt="registration" className="card-img" />
                   <div className="card-content">
                     <Card.Title className="fw-bold">
                       New Registration

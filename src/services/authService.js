@@ -14,7 +14,7 @@ export const clearUserFromLocalStorage = () => {
 export const loginUser = async (usernameOrEmail, password) => {
   try {
     const response = await fetch(
-      "https://api-msib-6-travel-management-03.educalab.id/login",
+      "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

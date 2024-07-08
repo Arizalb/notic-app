@@ -17,13 +17,16 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://api-msib-6-travel-management-03.educalab.id/login/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, pass }),
-      });
+      const response = await fetch(
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/login/auth",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, pass }),
+        }
+      );
 
       const data = await response.json();
       console.log("Response dari server:", data);

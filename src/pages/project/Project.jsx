@@ -22,9 +22,9 @@ const Project = ({ updateSidebarProjectName }) => {
   const [modalMode, setModalMode] = useState("add");
   const [showProjectNameModal, setShowProjectNameModal] = useState(false);
   const [showDeleteProjectModal, setShowDeleteProjectModal] = useState(false);
- const [showDeleteTaskModal, setShowDeleteTaskModal] = useState(false);
+  const [showDeleteTaskModal, setShowDeleteTaskModal] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Project = ({ updateSidebarProjectName }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://api-msib-6-travel-management-03.educalab.id/projects/${id_project}`,
+          `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/projects/${id_project}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -47,7 +47,7 @@ const Project = ({ updateSidebarProjectName }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://api-msib-6-travel-management-03.educalab.id/${id_project}/tasks`,
+          `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/${id_project}/tasks`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         const allTasks = response.data;
@@ -63,10 +63,10 @@ const Project = ({ updateSidebarProjectName }) => {
     fetchProjectDetails();
     fetchTasks();
   }, [id_project]);
-const confirmDeleteTask = (id) => {
-  const task = tasks.find((task) => task.id_task === id);
-  setTaskToDelete(task);
-  setShowDeleteTaskModal(true);
+  const confirmDeleteTask = (id) => {
+    const task = tasks.find((task) => task.id_task === id);
+    setTaskToDelete(task);
+    setShowDeleteTaskModal(true);
   };
 
   const handleDelete = async () => {
@@ -75,7 +75,7 @@ const confirmDeleteTask = (id) => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://api-msib-6-travel-management-03.educalab.id/${id_project}/tasks/${taskToDelete.id_task}`,
+        `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/${id_project}/tasks/${taskToDelete.id_task}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -97,12 +97,11 @@ const confirmDeleteTask = (id) => {
     setShowTaskModal(true);
   };
 
-
   const handleDeleteProject = async () => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://api-msib-6-travel-management-03.educalab.id/projects/${id_project}`,
+        `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/projects/${id_project}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -122,7 +121,7 @@ const confirmDeleteTask = (id) => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://api-msib-6-travel-management-03.educalab.id/tasks/${id}/status`,
+        `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/tasks/${id}/status`,
         { status: updatedStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -133,7 +132,6 @@ const confirmDeleteTask = (id) => {
             ...task,
             status: updatedStatus,
           };
-          
         }
         window.location.reload();
         return task;
@@ -155,7 +153,7 @@ const confirmDeleteTask = (id) => {
       console.error("Error updating task status:", error);
     }
   };
-  
+
   const handleSaveTask = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -178,7 +176,7 @@ const confirmDeleteTask = (id) => {
 
       if (modalMode === "add") {
         const response = await axios.post(
-          `https://api-msib-6-travel-management-03.educalab.id/${id_project}/tasks`,
+          `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/${id_project}/tasks`,
           modalTask,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -186,7 +184,7 @@ const confirmDeleteTask = (id) => {
         window.location.reload();
       } else if (modalMode === "edit") {
         await axios.put(
-          `https://api-msib-6-travel-management-03.educalab.id/${id_project}/tasks/${modalTask.id_task}`,
+          `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/${id_project}/tasks/${modalTask.id_task}`,
           modalTask,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -218,7 +216,7 @@ const confirmDeleteTask = (id) => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://api-msib-6-travel-management-03.educalab.id/projects/${id_project}`,
+        `https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/projects/${id_project}`,
         { nama: projectName },
         { headers: { Authorization: `Bearer ${token}` } }
       );

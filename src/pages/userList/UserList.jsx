@@ -19,7 +19,7 @@ class UserList extends Component {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://api-msib-6-travel-management-03.educalab.id/users",
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/users",
         {
           headers: {
             Authorization: `Bearer ${token}`,

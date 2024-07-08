@@ -2,13 +2,30 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext"; // Adjust the path if necessary
 import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import 'chart.js/auto';
-import './dashboardUser.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import "chart.js/auto";
+import "./dashboardUser.css";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const DashboardUser = () => {
   const { user } = useContext(AuthContext); // Get user data from AuthContext
@@ -19,14 +36,24 @@ const DashboardUser = () => {
   const [totalTasks, setTotalTasks] = useState(0); // Updated state for totalTasks
 
   const data = {
-    labels: ['April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    labels: [
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
-        label: 'Tasks Done',
+        label: "Tasks Done",
         data: [20, 30, 45, 60, 40, 55, 70, 60, 80], // Replace with actual data
         fill: true,
-        backgroundColor: 'rgba(108, 99, 255, 0.2)',
-        borderColor: '#6c63ff',
+        backgroundColor: "rgba(108, 99, 255, 0.2)",
+        borderColor: "#6c63ff",
         tension: 0.1,
       },
     ],
@@ -40,7 +67,7 @@ const DashboardUser = () => {
       },
       title: {
         display: true,
-        text: 'Tasks Done Over Time',
+        text: "Tasks Done Over Time",
       },
     },
   };
@@ -50,7 +77,7 @@ const DashboardUser = () => {
       try {
         const token = localStorage.getItem("token");
         const projectResponse = await axios.get(
-          "https://api-msib-6-travel-management-03.educalab.id/projects", // Adjust endpoint as needed
+          "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/projects", // Adjust endpoint as needed
           {
             headers: {
               Authorization: `Bearer ${token}`, // Ensure token is sent with Bearer format
@@ -60,11 +87,13 @@ const DashboardUser = () => {
         console.log("Fetched project data:", projectResponse.data); // Debug log
         // Assuming projectResponse.data contains an array of projects
         const totalProjects = projectResponse.data.length;
-        const completedProjects = projectResponse.data.filter(project => project.status === 'completed').length;
+        const completedProjects = projectResponse.data.filter(
+          (project) => project.status === "completed"
+        ).length;
         setProjectStats({ totalProjects, completedProjects });
-  
+
         const taskResponse = await axios.get(
-          "https://api-msib-6-travel-management-03.educalab.id/53/tasks", // Adjust endpoint as needed
+          "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/53/tasks", // Adjust endpoint as needed
           {
             headers: {
               Authorization: `Bearer ${token}`, // Ensure token is sent with Bearer format
@@ -79,14 +108,17 @@ const DashboardUser = () => {
         console.error("Failed to fetch project or task stats:", error);
       }
     };
-  
+
     fetchProjectStats();
   }, []);
 
   const { totalProjects, completedProjects } = projectStats;
 
   return (
-    <Container fluid className={`component-container p-3 ${user ? 'light-mode' : 'dark-mode'}`}>
+    <Container
+      fluid
+      className={`component-container p-3 ${user ? "light-mode" : "dark-mode"}`}
+    >
       {user ? (
         <>
           <Row className="mb-3">
@@ -102,8 +134,12 @@ const DashboardUser = () => {
                   <div className="card-content">
                     <Card.Title className="fw-bold">Tasks</Card.Title>
                     <Card.Text className="card-text-custom">
-                      <h1 className="fw-bold">{totalTasks}</h1> {/* Display totalTasks */}
-                      <p className="ms-2">You have {totalTasks} unfinished tasks</p> {/* Adjust message */}
+                      <h1 className="fw-bold">{totalTasks}</h1>{" "}
+                      {/* Display totalTasks */}
+                      <p className="ms-2">
+                        You have {totalTasks} unfinished tasks
+                      </p>{" "}
+                      {/* Adjust message */}
                     </Card.Text>
                   </div>
                 </Card.Body>
@@ -112,7 +148,11 @@ const DashboardUser = () => {
             <Col>
               <Card className="card-hover">
                 <Card.Body className="card-body-custom">
-                  <img src="/Hotspot.svg" alt="current-project" className="card-img" />
+                  <img
+                    src="/Hotspot.svg"
+                    alt="current-project"
+                    className="card-img"
+                  />
                   <div className="card-content">
                     <Card.Title className="fw-bold">Projects</Card.Title>
                     <Card.Text className="card-text-custom">
@@ -133,7 +173,6 @@ const DashboardUser = () => {
                 </Card.Body>
               </Card>
             </Col>
-            
           </Row>
         </>
       ) : (

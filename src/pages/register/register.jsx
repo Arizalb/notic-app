@@ -23,7 +23,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "https://api-msib-6-travel-management-03.educalab.id/register/save",
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/register/save",
         {
           method: "POST",
           headers: {
@@ -81,11 +81,7 @@ const Register = () => {
     <div className="register-page">
       <ToastContainer />
       <div className="wave-container-atas mb-5">
-        <img
-          src="/waveatas.png"
-          alt="Wave"
-          className="wave-image-atas mb-5"
-        />
+        <img src="/waveatas.png" alt="Wave" className="wave-image-atas mb-5" />
       </div>
       <div className="logo-container">
         <img

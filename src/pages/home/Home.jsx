@@ -4,9 +4,9 @@ import "./home.css"; // Pastikan Anda menambahkan styling custom jika diperlukan
 import noticImage from "../../assets/hero.png";
 import wave from "../../../public/waves.svg";
 import wavedown from "../../../public/waves-down.svg";
-import easy from "../../assets/easy.png"
-import boost from "../../assets/shuttle.png"
-import access from "../../assets/anywhere.png"
+import easy from "../../assets/easy.png";
+import boost from "../../assets/shuttle.png";
+import access from "../../assets/anywhere.png";
 
 const Home = () => {
   return (
@@ -28,8 +28,7 @@ const Home = () => {
               <Button type="submit" className="btn-sign-up-home">
                 Sign up - it's free!
               </Button>
-              <a href="/register">
-              </a>
+              <a href="https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/register"></a>
             </Form>
           </Col>
           <Col md={6} className="image-container-home">

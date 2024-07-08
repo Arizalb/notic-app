@@ -1,17 +1,25 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Form, Button, Card, Modal } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+  Modal,
+} from "react-bootstrap";
 import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/ThemeContext";
-import { FiSun, FiMoon } from 'react-icons/fi';
-import axios from 'axios';
+import { FiSun, FiMoon } from "react-icons/fi";
+import axios from "axios";
 import "./settinganAdmin.css";
 
 const SettinganAdmin = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-  const [profilePic, setProfilePic] = useState(""); 
+  const [profilePic, setProfilePic] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -32,18 +40,18 @@ const SettinganAdmin = () => {
   }, [user, navigate]);
 
   const getToken = () => {
-    return localStorage.getItem('token'); // Assuming the token is stored with the key 'token'
+    return localStorage.getItem("token"); // Assuming the token is stored with the key 'token'
   };
 
   const handleProfilePicChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
       const formData = new FormData();
-      formData.append('foto', file);
-  
+      formData.append("foto", file);
+
       try {
         const response = await axios.put(
-          "https://api-msib-6-travel-management-03.educalab.id/profile/foto",
+          "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/profile/foto",
           formData,
           {
             headers: {
@@ -71,7 +79,7 @@ const SettinganAdmin = () => {
   const handleConfirmUsername = async () => {
     try {
       await axios.put(
-        "https://api-msib-6-travel-management-03.educalab.id/profile/username",
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/profile/username",
         { username: newUsername },
         {
           headers: { Authorization: `Bearer ${getToken()}` },
@@ -93,7 +101,7 @@ const SettinganAdmin = () => {
 
     try {
       await axios.put(
-        "https://api-msib-6-travel-management-03.educalab.id/profile/password",
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/profile/password",
         { currentPassword, password: newPassword, confirmPassword },
         {
           headers: { Authorization: `Bearer ${getToken()}` },
@@ -112,7 +120,7 @@ const SettinganAdmin = () => {
   const handleConfirmEmail = async () => {
     try {
       await axios.put(
-        "https://api-msib-6-travel-management-03.educalab.id/profile/email",
+        "https://fabulous-valkyrie-a1250b.netlify.app/.netlify/functions/expressApp/profile/email",
         { email: newEmail },
         {
           headers: { Authorization: `Bearer ${getToken()}` },
@@ -187,7 +195,9 @@ const SettinganAdmin = () => {
             </Card>
             <Card className="card-setting mb-4">
               <Card.Body className="card-body-setting">
-                <Card.Title className="mb-2 mt-0 text-center">Change Email</Card.Title>
+                <Card.Title className="mb-2 mt-0 text-center">
+                  Change Email
+                </Card.Title>
                 <Form>
                   <Form.Group controlId="formCurrentEmail">
                     <Form.Label>Current Email</Form.Label>
@@ -195,7 +205,7 @@ const SettinganAdmin = () => {
                       type="email"
                       placeholder="Enter current email"
                       readOnly
-                      value={user?.email || ''}
+                      value={user?.email || ""}
                       className="form-control"
                     />
                   </Form.Group>
@@ -210,7 +220,11 @@ const SettinganAdmin = () => {
                     />
                   </Form.Group>
                   <div className="d-flex justify-content-end mt-4">
-                    <Button variant="secondary" onClick={handleCancel} className="me-3">
+                    <Button
+                      variant="secondary"
+                      onClick={handleCancel}
+                      className="me-3"
+                    >
                       Cancel
                     </Button>
                     <Button variant="danger" onClick={handleConfirmEmail}>
@@ -232,7 +246,7 @@ const SettinganAdmin = () => {
                       type="text"
                       placeholder="Enter current username"
                       readOnly
-                      value={user?.username || ''}
+                      value={user?.username || ""}
                       className="form-control"
                     />
                   </Form.Group>
@@ -247,7 +261,11 @@ const SettinganAdmin = () => {
                     />
                   </Form.Group>
                   <div className="d-flex justify-content-end mt-4">
-                    <Button variant="secondary" onClick={handleCancel} className="me-3">
+                    <Button
+                      variant="secondary"
+                      onClick={handleCancel}
+                      className="me-3"
+                    >
                       Cancel
                     </Button>
                     <Button variant="danger" onClick={handleConfirmUsername}>
@@ -280,10 +298,11 @@ const SettinganAdmin = () => {
                       onChange={(e) => setNewPassword(e.target.value)}
                       className="form-control"
                     />
-               
                   </Form.Group>
                   <Form.Group controlId="formConfirmPassword" className="mt-3">
-                    <Form.Label className="mt-3">Confirm New Password</Form.Label>
+                    <Form.Label className="mt-3">
+                      Confirm New Password
+                    </Form.Label>
                     <Form.Control
                       type="password"
                       placeholder="Confirm new password"
@@ -293,7 +312,11 @@ const SettinganAdmin = () => {
                     />
                   </Form.Group>
                   <div className="d-flex justify-content-end mt-5">
-                    <Button variant="secondary" onClick={handleCancel} className="me-3">
+                    <Button
+                      variant="secondary"
+                      onClick={handleCancel}
+                      className="me-3"
+                    >
                       Cancel
                     </Button>
                     <Button variant="danger" onClick={handleConfirmPassword}>
