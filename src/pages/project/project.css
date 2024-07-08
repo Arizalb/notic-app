@@ -1,0 +1,185 @@
+.container {
+  margin-top: 20px;
+}
+
+.badge {
+  padding: 0.5em 0.75em;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+}
+
+.form-select {
+  padding: 0.375em 1.75em 0.375em 0.75em;
+}
+.select-column {
+  width: 50px; /* Atur lebar kolom checkbox */
+}
+
+.table th,
+.table td {
+  vertical-align: middle; /* Menjaga konten di tengah secara vertikal */
+}
+
+.d-flex.justify-content-center {
+  justify-content: center;
+}
+
+.form-check-input:checked {
+  background-color: #57A9CF; /* Warna latar belakang saat checkbox dicentang (bootstrap primary color) */
+  border-color: #57A9CF; /* Warna border saat checkbox dicentang */
+}
+
+.form-check-input:checked::before {
+  color: #fff; /* Warna tanda centang (putih) */
+}
+
+.form-check-input {
+  border-radius: 0.25rem; /* Border radius untuk menyesuaikan dengan gaya Bootstrap */
+}
+.btn-new-task{
+    background-color:#57A9CF ;
+    color: white;
+    font-weight: bolder;
+}
+.btn-new-task:hover{
+    background-color:#63c2eb ;
+    color: white;
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .project-container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .pencil-icon {
+    font-size: 1em;
+  }
+
+  .table {
+    font-size: 0.8em;
+  }
+
+  .btn {
+    font-size: 0.8em;
+  }
+
+  .modal-dialog {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .project-container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .pencil-icon {
+    font-size: 1.5em;
+  }
+
+  .table {
+    font-size: 1em;
+  }
+
+  .btn {
+    font-size: 1em;
+  }
+
+  .modal-dialog {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+}
+
+/* Common styles */
+.btn-new-task {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-new-task:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.tag-tag{
+  background-color: rgba(0, 208, 255, 0.187);
+  color:  rgb(1, 47, 97);
+  border-radius: 5px;
+  padding: 5px;
+  
+}
+
+.dark-mode .tag-tag {
+  background-color: rgba(255, 196, 0, 0.187);
+  color:  rgb(255, 183, 0);
+  border-radius: 5px;
+  padding: 5px;
+  
+}
+.btn-edit {
+  color: white;
+}
+.dark-mode .btn-edit {
+  color: rgb(35, 35, 35);
+}
+.btn-comment {
+  color: white;
+}
+.dark-mode .btn-comment {
+  color: rgb(35, 35, 35);
+}
+.btn-sampah {
+  color: white;
+}
+.dark-mode .btn-sampah {
+  color: rgb(35, 35, 35);
+}
+
+
+.priority-low {
+  color: rgb(28, 171, 28);
+}
+
+.priority-medium {
+  color: orange;
+}
+
+.priority-high {
+  color: red;
+}
+.prioritas{
+  font-weight: bold;
+}
+
+.status-not-started {
+  background-color: #cccccc; /* abu-abu */
+}
+
+.status-on-process {
+  background-color: #ffff00; /* kuning */
+}
+
+.status-complete {
+  background-color: #00ff00; /* hijau */
+}
+
+.status-finished {
+  background-color: #0000ff; /* biru */
+}
